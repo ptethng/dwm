@@ -2158,7 +2158,7 @@ resource_load(XrmDatabase db, char *name, enum resource_type rtype, void *dst)
 	char *type;
 	XrmValue ret;
 
-	snprintf(fullname, sizeof(fullname), "%s.%s", "dwm", name);
+	snprintf(fullname, sizeof(fullname), "%s.%s", "", name);
 	fullname[sizeof(fullname) - 1] = '\0';
 
 	XrmGetResource(db, fullname, "*", &type, &ret);
@@ -2193,7 +2193,7 @@ load_xresources(void)
 
 	db = XrmGetStringDatabase(resm);
 	for (p = resources; p < resources + LENGTH(resources); p++)
-		resource_load(db, p->name, p->type, p->dst);
+		resource_load(db, p->name, p->type, p->dst);	
 	XCloseDisplay(display);
 }
 
