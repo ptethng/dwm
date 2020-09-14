@@ -261,6 +261,7 @@ static void centeredmaster(Monitor *m);
 static void centeredfloatingmaster(Monitor *m);
 static void load_xresources(void);
 static void resource_load(XrmDatabase db, char *name, enum resource_type rtype, void *dst);
+static void xrdb(const Arg *arg);
 
 /* variables */
 static const char broken[] = "broken";
@@ -2489,4 +2490,15 @@ centeredfloatingmaster(Monitor *m)
 		       m->wh - (2*c->bw), 0);
 		tx += WIDTH(c);
 	}
+}
+
+void
+xrdb(const Arg *arg)
+{
+  load_xresources();
+  int i;
+  for (i = 0; i < LENGTH(colors); i++)
+                scheme[i] = drw_scm_create(drw, colors[i], alphas[i], 3);
+  focus(NULL);
+  arrange(NULL);
 }
