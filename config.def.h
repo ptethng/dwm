@@ -31,13 +31,15 @@ typedef struct {
 	const void *cmd;
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
+const char *spcmd2[] = {"st", "-n", "spfm", "-g", "120x34", "-e", "ranger", NULL };
 const char *spcmd3[] = {"keepassxc", NULL };
+const char *spcmd4[] = {"st", "-n", "spaudio", "-g", "120x34", "-e", "pulsemixer", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
 	{"spranger",    spcmd2},
 	{"keepassxc",   spcmd3},
+	{"pulsemixer",   spcmd4},
 };
 
 /* tagging */
@@ -53,6 +55,7 @@ static const Rule rules[] = {
 	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1,			 -1 },
 	{ NULL,		  "spfm",		NULL,		SPTAG(1),		1,			 -1 },
 	{ NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 },
+	{ NULL,		  "spaudio",		NULL,		SPTAG(3),		1,			 -1 },
 };
 
 /* layout(s) */
@@ -143,6 +146,7 @@ static Key keys[] = {
 	{ MODKEY,            			XK_e,  	   togglescratch,  {.ui = 0 } },
 	{ MODKEY,            			XK_w,	   togglescratch,  {.ui = 1 } },
 	{ MODKEY,            			XK_q,	   togglescratch,  {.ui = 2 } },
+	{ MODKEY,            			XK_r,	   togglescratch,  {.ui = 3 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
