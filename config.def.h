@@ -59,7 +59,7 @@ static const Rule rules[] = {
 	{ "Firefox",  NULL,			NULL,		1 << 8,			0,			 -1 },
 	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1,			 -1 },
 	{ NULL,		  "spfm",		NULL,		SPTAG(1),		1,			 -1 },
-	{ NULL,		  "keepassxc",	NULL,		SPTAG(2),		0,			 -1 },
+	{ NULL,		  "keepassxc",	NULL,		SPTAG(2),		1,			 -1 },
 	{ NULL,		  "spaudio",		NULL,		SPTAG(3),		1,			 -1 },
 };
 
@@ -92,8 +92,9 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *wallpaper[] = {"wallpaper-select", NULL};
 
  
 /*
@@ -101,10 +102,10 @@ static const char *termcmd[]  = { "st", NULL };
  */
 ResourcePref resources[] = {
 		{ "color0",             STRING,  &normbgcolor },
-		{ "color4",	        STRING,  &normbordercolor },
+		{ "color8",	        STRING,  &normbordercolor },
 		{ "color7",             STRING,  &normfgcolor },
-		{ "color4",             STRING,  &selbgcolor },
-		{ "color9",             STRING,  &selbordercolor },
+		{ "color8",             STRING,  &selbgcolor },
+		{ "color15",             STRING,  &selbordercolor },
 		{ "color7",             STRING,  &selfgcolor },
 		{ "borderpx",          	INTEGER, &borderpx },
 		{ "snap",         		INTEGER, &snap },
@@ -121,6 +122,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,		        XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_a,      spawn,          {.v = wallpaper } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
