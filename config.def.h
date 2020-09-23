@@ -11,7 +11,7 @@ static const int smartgaps          = 0;        /* 1 means no outer gap when the
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { 
-	"Liberation Mono:pixelsize=14:antialias=true:autohint=true", 
+	"Liberation Mono:pixelsize=16:antialias=true:autohint=true", 
 	"JoyPixels:pixelsize=10:antialias=true:autohint=true"
 };
 static const char dmenufont[]       = "Liberation Mono:size=10";
@@ -58,6 +58,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",	  NULL,			NULL,		0,				1,			 -1 },
 	{ "Firefox",  	NULL,			NULL,		1 << 8,			0,			 -1 },
+	{ "keepassxc",  NULL,	NULL,		1 << 8,			0,			 -1 },
 	{ NULL,		  "spterm",		NULL,		SPTAG(0),		1,			 -1 },
 	{ NULL,		  "spfm",		NULL,		SPTAG(1),		1,			 -1 },
 	{ NULL,		  "spaudio",		NULL,		SPTAG(2),		1,			 -1 },
@@ -99,6 +100,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *wallpaper[] = {"wallpaper-select", NULL};
+static const char *emoji[] = {"emoji-select", NULL};
 static const char *passmenu[] = {"passmenu", NULL};
 
  
@@ -129,6 +131,7 @@ static Key keys[] = {
 	{ MODKEY,		        XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = wallpaper } },
 	{ MODKEY,                       XK_q,      spawn,          {.v = passmenu } },
+	{ MODKEY,                       XK_bracketleft,      spawn,          {.v = emoji } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	STACKKEYS(MODKEY,                          focus)
 	STACKKEYS(MODKEY|ShiftMask,                push)
