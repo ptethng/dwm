@@ -8,7 +8,8 @@ static const unsigned int gappih    = 10;       /* horiz inner gap between windo
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
 static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
-static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
+static const int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
+static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { 
@@ -57,13 +58,13 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    	title       	tags mask	isfloating   	monitor */
-	{ "Gimp",	NULL,		NULL,		0,		1,		-1 },
-	{ "Firefox",  	NULL,		NULL,		1 << 8,		0,		-1 },
-	{ "keepassxc",  NULL,		NULL,		1 << 8,		0,		-1 },
-	{ NULL,		"spterm",	NULL,		SPTAG(0),	1,		-1 },
-	{ NULL,		"spfm",		NULL,		SPTAG(1),	1,		-1 },
-	{ NULL,		"spaudio",	NULL,		SPTAG(2),	1,		-1 },
+	/* class      	instance    title       tags mask	isfloating	isterminal	noswallow  	monitor */
+	{ "Firefox",  	NULL,		NULL,		1 << 8,		0,			0,			0,		-1 },
+	{ "keepassxc",  NULL,		NULL,		1 << 8,		0,			0,			-1,		-1 },
+	{ "St",			NULL,		NULL,		0,			0,			1,			0,		-1 },
+	{ NULL,			"spterm",	NULL,		SPTAG(0),	1,			1,			0,		-1 },
+	{ NULL,			"spfm",		NULL,		SPTAG(1),	1,			1,			0,		-1 },
+	{ NULL,			"spaudio",	NULL,		SPTAG(2),	1,			1,			0,		-1 },
 };
 
 /* layout(s) */
@@ -137,7 +138,6 @@ static Key keys[] = {
 	{ MODKEY,            		XK_e,  	   		togglescratch,  {.ui = 0 } },
 	{ MODKEY,            		XK_w,	   		togglescratch,  {.ui = 1 } },
 	{ MODKEY,            		XK_r,	   		togglescratch,  {.ui = 2 } },
-
 
 	STACKKEYS(MODKEY,                   			focus)
 	STACKKEYS(MODKEY|ShiftMask,                		push)
