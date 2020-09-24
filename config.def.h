@@ -62,6 +62,7 @@ static const Rule rules[] = {
 	{ "Firefox",  	NULL,		NULL,		1 << 8,		0,	0,			0,		-1 },
 	{ "keepassxc",  NULL,		NULL,		1 << 8,		0,	0,			-1,		-1 },
 	{ "St",		NULL,		NULL,		0,		0,	1,			0,		-1 },
+	{ "St",		NULL,		"newsboat",	4,		0,	1,			0,		-1 },
 	{ NULL,		"spterm",	NULL,		SPTAG(0),	1,	1,			0,		-1 },
 	{ NULL,		"spfm",		NULL,		SPTAG(1),	1,	1,			0,		-1 },
 	{ NULL,		"spaudio",	NULL,		SPTAG(2),	1,	1,			0,		-1 },
@@ -183,8 +184,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY,	                XK_x,      spawn,          {0} },
-	{ MODKEY|ShiftMask,             XK_x,      quit,           {.v = slock} },
+	{ MODKEY,	                XK_x,      spawn,          {.v = slock} },
+	{ MODKEY|ShiftMask,             XK_x,      quit,           {0} },
 };
 
 /* button definitions */
