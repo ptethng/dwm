@@ -59,12 +59,12 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      	instance    title       tags mask	isfloating	isterminal	noswallow  	monitor */
-	{ "Firefox",  	NULL,		NULL,		1 << 8,		0,	0,			0,		-1 },
-	{ "keepassxc",  NULL,		NULL,		1 << 8,		0,	0,			-1,		-1 },
-	{ "St",		NULL,		NULL,		0,		0,	1,			0,		-1 },
-	{ NULL,		"spterm",	NULL,		SPTAG(0),	1,	1,			0,		-1 },
-	{ NULL,		"spfm",		NULL,		SPTAG(1),	1,	1,			0,		-1 },
-	{ NULL,		"spaudio",	NULL,		SPTAG(2),	1,	1,			0,		-1 },
+	{ "Firefox",  	NULL,		NULL,		1 << 8,		0,			0,			0,		-1 },
+	{ "keepassxc",  NULL,		NULL,		1 << 8,		0,			0,			-1,		-1 },
+	{ "St",			NULL,		NULL,		0,			0,			1,			0,		-1 },
+	{ NULL,			"spterm",	NULL,		SPTAG(0),	1,			1,			0,		-1 },
+	{ NULL,			"spfm",		NULL,		SPTAG(1),	1,			1,			0,		-1 },
+	{ NULL,			"spaudio",	NULL,		SPTAG(2),	1,			1,			0,		-1 },
 };
 
 /* layout(s) */
@@ -106,7 +106,6 @@ static const char *wallpaper[] = {"wallpaper-select", NULL};
 static const char *emoji[] = {"emoji-select", NULL};
 static const char *passmenu[] = {"passmenu", NULL};
 static const char *browser[] = {"chromium", NULL};
-static const char *slock[] = {"slock", NULL};
  
 /*
  * Xresources preferences to load at startup
@@ -183,8 +182,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY,	                XK_x,      spawn,          {0} },
-	{ MODKEY|ShiftMask,             XK_x,      quit,           {.v = slock} },
+	{ MODKEY|ShiftMask,             XK_x,      quit,           {0} },
 };
 
 /* button definitions */
