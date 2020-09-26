@@ -24,7 +24,7 @@ static char normfgcolor[]           = "#bbbbbb";
 static char selfgcolor[]            = "#eeeeee";
 static char selbordercolor[]        = "#005577";
 static char selbgcolor[]            = "#005577";
-static const unsigned int baralpha = OPAQUE;
+static const unsigned int baralpha = 230;
 static const unsigned int borderalpha = OPAQUE;
 static char *colors[][3] = {
        /*               fg           bg           border   */
@@ -42,13 +42,13 @@ typedef struct {
 	const void *cmd;
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {"st", "-n", "spfm", "-g", "120x34", "-e", "ranger", NULL };
+const char *spcmd2[] = {"st", "-n", "spfm", "-g", "120x34", "-e", "vifmrun", NULL };
 const char *spcmd3[] = {"st", "-n", "spaudio", "-g", "120x34", "-e", "pulsemixer", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
-	{"spranger",    spcmd2},
-	{"pulsemixer",   spcmd3},
+	{"spfm",    spcmd2},
+	{"spaudio",   spcmd3},
 };
 
 /* tagging */
@@ -61,8 +61,9 @@ static const Rule rules[] = {
 	/* class      	instance    title       tags mask	isfloating	isterminal	noswallow  	monitor */
 	{ "Firefox",  	NULL,		NULL,		1 << 8,		0,	0,			0,		-1 },
 	{ "keepassxc",  NULL,		NULL,		1 << 8,		0,	0,			-1,		-1 },
+	{ "Dragon-drag-and-drop",  NULL,		NULL,		0,		1,	0,			1,		-1 },
 	{ "St",		NULL,		NULL,		0,		0,	1,			0,		-1 },
-	{ "St",		NULL,		"newsboat",	4,		0,	1,			0,		-1 },
+	{ "St",		NULL,		"newsboat",	0,		0,	1,			0,		-1 },
 	{ NULL,		"spterm",	NULL,		SPTAG(0),	1,	1,			0,		-1 },
 	{ NULL,		"spfm",		NULL,		SPTAG(1),	1,	1,			0,		-1 },
 	{ NULL,		"spaudio",	NULL,		SPTAG(2),	1,	1,			0,		-1 },
