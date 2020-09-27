@@ -15,7 +15,7 @@ static int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { 
 	"Liberation Mono:pixelsize=16:antialias=true:autohint=true", 
 	"JoyPixels:pixelsize=10:antialias=true:autohint=true",
-	"FontAwesome:size=8"
+	"Ubuntu Mono Nerd Font:size=8"
 };
 static const char dmenufont[]       = "Liberation Mono:size=10";
 static char normbgcolor[]           = "#222222";
@@ -52,7 +52,7 @@ static Sp scratchpads[] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
