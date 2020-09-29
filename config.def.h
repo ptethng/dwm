@@ -107,8 +107,8 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *wallpaper[] = {"wallpaper-select", NULL};
 static const char *emoji[] = {"emoji-select", NULL};
 static const char *passmenu[] = {"passmenu", NULL};
-static const char *browser[] = {"chromium", NULL};
-static const char *slock[] = {"slock", NULL};
+static const char *browser[] = {"brave", NULL};
+static const char *i3lock[] = {"i3lock-script", NULL};
  
 /*
  * Xresources preferences to load at startup
@@ -185,7 +185,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY,	                XK_x,      spawn,          {.v = slock} },
+	{ MODKEY,	                XK_x,      spawn,          {.v = i3lock} },
 	{ MODKEY|ShiftMask,             XK_x,      quit,           {0} },
 };
 
