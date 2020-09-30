@@ -24,7 +24,7 @@ static char normfgcolor[]           = "#bbbbbb";
 static char selfgcolor[]            = "#eeeeee";
 static char selbordercolor[]        = "#005577";
 static char selbgcolor[]            = "#005577";
-static const unsigned int baralpha = 230;
+static const unsigned int baralpha = OPAQUE;
 static const unsigned int borderalpha = OPAQUE;
 static char *colors[][3] = {
        /*               fg           bg           border   */
@@ -165,6 +165,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_y,      		setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_u,      		setlayout,      {.v = &layouts[4]} },
 	{ MODKEY|ShiftMask,             XK_u,      		setlayout,      {.v = &layouts[5]} },
+	{ MODKEY,                       XK_s,      		setlayout,      {.v = &layouts[6]} },
 	{ MODKEY,                       XK_space,  		setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  		togglefloating, {0} },
 	{ MODKEY,                       XK_f,      		togglefullscr,  {0} },
