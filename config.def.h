@@ -83,6 +83,8 @@ static const Layout layouts[] = {
  	{ "[\\]",      dwindle },
 	{ "|M|",      centeredmaster },
 	{ ">M>",      centeredfloatingmaster },
+  { "TTT",      bstack },
+	{ "===",      bstackhoriz },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 };
 
@@ -143,6 +145,7 @@ static Key keys[] = {
 	{ MODKEY,            		XK_e,  	   		togglescratch,  {.ui = 0 } },
 	{ MODKEY,            		XK_w,	   		togglescratch,  {.ui = 1 } },
 	{ MODKEY,            		XK_r,	   		togglescratch,  {.ui = 2 } },
+	{ MODKEY,            		XK_r,	   		spawn,  SHCMD("pkill -RTMIN+10 dwmblocks") },
 
 	STACKKEYS(MODKEY,                   			focus)
 	STACKKEYS(MODKEY|ShiftMask,                		push)
@@ -151,8 +154,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_h,      		setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      		setmfact,       {.f = +0.05} },
 
-	{ MODKEY|Mod4Mask,              XK_minus,  		incrgaps,       {.i = +3 } },
-	{ MODKEY|Mod4Mask,              XK_equal,  		incrgaps,       {.i = -3 } },
+	{ MODKEY|Mod4Mask,              XK_minus,  		incrgaps,       {.i = +20 } },
+	{ MODKEY|Mod4Mask,              XK_equal,  		incrgaps,       {.i = -20 } },
 	{ MODKEY|Mod4Mask,              XK_a,      		togglegaps,     {0} },
 	{ MODKEY|Mod4Mask|ShiftMask,    XK_a,     		defaultgaps,    {0} },
 
@@ -167,7 +170,10 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_y,      		setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                       XK_u,      		setlayout,      {.v = &layouts[4]} },
 	{ MODKEY|ShiftMask,             XK_u,      		setlayout,      {.v = &layouts[5]} },
-	{ MODKEY,                       XK_s,      		setlayout,      {.v = &layouts[6]} },
+	{ MODKEY,                       XK_g,      		setlayout,      {.v = &layouts[6]} },
+	{ MODKEY|ShiftMask,             XK_g,      		setlayout,      {.v = &layouts[7]} },
+	{ MODKEY,                       XK_s,      		setlayout,      {.v = &layouts[8]} },
+
 	{ MODKEY,                       XK_space,  		setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  		togglefloating, {0} },
 	{ MODKEY,                       XK_f,      		togglefullscr,  {0} },
